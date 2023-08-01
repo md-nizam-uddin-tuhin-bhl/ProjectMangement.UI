@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table" *ngIf="product && product.length > 0">
+                <thead>
+                  <tr>
+                    <!-- <th>#</th> -->
+                    <th>name</th>
+                    <th>type</th>
+                    <th>color</th>
+                    <th>price</th>
+                    <th colspan="2" class="text-center">Action</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of product">
+                    <!-- <th>{{item.id}}</th> -->
+                    <td>{{item.name}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.color}}</td>
+                    <td>{{item.price | currency}}</td>
+                    <td class="text-center"><a [routerLink]="['/product','edit',item.id]">Edit</a></td>
+                    <td class="text-center"><a [routerLink]="[]" (click)="DeletePro(item.id)">Delete</a></td>
+                  </tr>
+                  
+              </table>
+            <p *ngIf="!product || product.length == 0">Product Not Found</p>
+        </div>
+    </div>
+</div>
+
